@@ -10,7 +10,10 @@ function getInitialRevealState(): boolean {
   }
 }
 
-export function useScrollReveal<T extends HTMLElement = HTMLElement>(threshold = 0.08) {
+export function useScrollReveal<T extends HTMLElement = HTMLElement>(
+  threshold = 0.1,
+  rootMargin = '0px 0px 40px 0px'
+) {
   const ref = useRef<T>(null)
   const [isRevealed, setIsRevealed] = useState<boolean>(getInitialRevealState)
 
@@ -29,7 +32,7 @@ export function useScrollReveal<T extends HTMLElement = HTMLElement>(threshold =
       },
       {
         threshold,
-        rootMargin: '0px 0px -30px 0px',
+        rootMargin,
       }
     )
 
@@ -38,7 +41,7 @@ export function useScrollReveal<T extends HTMLElement = HTMLElement>(threshold =
     return () => {
       observer.disconnect()
     }
-  }, [threshold, isRevealed])
+  }, [threshold, rootMargin, isRevealed])
 
   return { ref, isRevealed }
 }

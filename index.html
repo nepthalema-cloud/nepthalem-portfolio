@@ -9,6 +9,14 @@
       name="description"
       content="Professional software engineering portfolio of Nepthalem Ayele. Full-stack web applications, backend systems, databases, and applied AI/ML integration."
     />
+    <script>
+      try {
+        const theme = localStorage.getItem('portfolio-theme');
+        document.documentElement.dataset.theme = theme === 'dark' ? 'dark' : 'light';
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

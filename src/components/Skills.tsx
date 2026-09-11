@@ -62,14 +62,11 @@ function Skills() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {skillGroups.map((group, index) => (
+        <div className={`mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6 section-reveal-surface ${isRevealed ? 'is-revealed' : ''}`}>
+          {skillGroups.map((group) => (
             <article
               key={group.title}
-              style={{ transitionDelay: isRevealed ? `${index * 40}ms` : '0ms' }}
-              className={`card-hover section-reveal rounded-xl border border-border bg-surface p-5 hover:border-accent sm:p-6 ${
-                isRevealed ? 'is-revealed' : ''
-              }`}
+              className="card-hover rounded-xl border border-border bg-surface p-5 hover:border-accent sm:p-6"
             >
               <h3 className="text-base font-semibold text-foreground sm:text-lg">{group.title}</h3>
               <p className="mt-1 text-xs leading-relaxed text-secondary sm:text-sm">{group.description}</p>

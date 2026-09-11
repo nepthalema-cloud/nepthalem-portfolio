@@ -31,7 +31,7 @@ function Projects() {
           </p>
         </div>
 
-        <div className="mt-10 space-y-3.5">
+        <div className={`mt-10 space-y-3.5 section-reveal-surface ${isRevealed ? 'is-revealed' : ''}`}>
           {projects.map((project, index) => {
             const isExpanded = expandedSlug === project.slug
             const projectNumber = String(index + 1).padStart(2, '0')
@@ -39,10 +39,9 @@ function Projects() {
             return (
               <article
                 key={project.slug}
-                style={{ transitionDelay: isRevealed ? `${index * 40}ms` : '0ms' }}
-                className={`card-hover section-reveal rounded-xl border bg-surface transition-all duration-200 ${
+                className={`card-hover rounded-xl border bg-surface transition-all duration-200 ${
                   isExpanded ? 'border-accent shadow-xs' : 'border-border hover:border-accent/70'
-                } ${isRevealed ? 'is-revealed' : ''}`}
+                }`}
               >
                 {/* Collapsed Header / Accordion Trigger */}
                 <button
@@ -51,17 +50,17 @@ function Projects() {
                   aria-expanded={isExpanded}
                   aria-controls={`project-details-${project.slug}`}
                   onClick={() => toggleProject(project.slug)}
-                  className="group flex min-h-11 w-full items-center justify-between gap-3 p-3.5 text-left transition-colors sm:p-4 md:px-5 md:py-4 focus-visible:outline-focus"
+                  className="group flex min-h-12 w-full items-center justify-between gap-3.5 p-4 text-left transition-colors sm:gap-4 sm:p-5 md:gap-6 md:px-6 md:py-5 focus-visible:outline-focus"
                 >
-                  <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+                  <div className="flex min-w-0 flex-1 items-center gap-3.5 sm:gap-4 md:gap-5">
                     {/* Project Number */}
-                    <span className="shrink-0 font-mono text-xs font-semibold text-muted sm:text-sm">
+                    <span className="shrink-0 font-mono text-xs font-semibold text-muted sm:w-6 sm:text-sm">
                       {projectNumber}
                     </span>
 
                     {/* Verified Thumbnail Preview */}
                     {project.imageUrl ? (
-                      <div className="relative aspect-video h-10 w-16 shrink-0 overflow-hidden rounded-md border border-border bg-page sm:h-11 sm:w-20">
+                      <div className="relative aspect-video h-12 w-20 shrink-0 overflow-hidden rounded-lg border border-border bg-page shadow-2xs sm:h-14 sm:w-24 md:h-16 md:w-28">
                         <img
                           src={project.imageUrl}
                           alt=""
@@ -71,11 +70,11 @@ function Projects() {
                       </div>
                     ) : (
                       <div
-                        className="flex aspect-video h-10 w-16 shrink-0 items-center justify-center rounded-md border border-border bg-accent-soft text-accent sm:h-11 sm:w-20"
+                        className="flex aspect-video h-12 w-20 shrink-0 items-center justify-center rounded-lg border border-border bg-accent-soft text-accent shadow-2xs sm:h-14 sm:w-24 md:h-16 md:w-28"
                         aria-hidden="true"
                       >
                         <svg
-                          className="size-5"
+                          className="size-6"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -90,30 +89,35 @@ function Projects() {
                       </div>
                     )}
 
-                    {/* Title & Mobile Category */}
-                    <div className="min-w-0">
-                      <h3 className="truncate text-sm font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent sm:text-base">
+                    {/* Title & Mobile Category/Status */}
+                    <div className="min-w-0 flex-1">
+                      <h3 className="truncate text-base font-bold tracking-tight text-foreground transition-colors group-hover:text-accent sm:text-lg sm:font-semibold">
                         {project.title}
                       </h3>
-                      <p className="truncate text-xs text-muted sm:hidden">
-                        {project.domain}
-                      </p>
+                      <div className="mt-1.5 flex flex-wrap items-center gap-1.5 sm:hidden">
+                        <span className="rounded bg-accent-soft px-2 py-0.5 text-[11px] font-semibold text-accent">
+                          {project.domain}
+                        </span>
+                        <span className="rounded border border-border bg-page px-1.5 py-0.5 text-[10px] font-medium text-muted">
+                          {project.deploymentType}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
                   {/* Desktop Badges & Expand Indicator */}
-                  <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-                    <span className="hidden max-w-[220px] truncate rounded-md bg-accent-soft px-2.5 py-1 text-xs font-semibold text-accent sm:inline-flex">
+                  <div className="flex shrink-0 items-center gap-2.5 sm:gap-3.5">
+                    <span className="hidden max-w-[240px] truncate rounded-md bg-accent-soft px-3 py-1 text-xs font-semibold text-accent sm:inline-flex">
                       {project.domain}
                     </span>
 
-                    <span className="hidden rounded-md border border-border px-2 py-0.5 text-xs font-medium text-muted md:inline-flex">
+                    <span className="hidden rounded-md border border-border bg-page px-2.5 py-1 text-xs font-medium text-muted md:inline-flex">
                       {project.deploymentType}
                     </span>
 
                     <span
-                      className={`inline-flex size-8 items-center justify-center rounded-md border border-border bg-page text-secondary transition-transform duration-200 ${
-                        isExpanded ? 'rotate-180 border-accent text-accent' : 'group-hover:text-foreground'
+                      className={`inline-flex size-9 items-center justify-center rounded-lg border border-border bg-page text-secondary transition-all duration-200 group-hover:border-accent group-hover:text-accent ${
+                        isExpanded ? 'rotate-180 border-accent text-accent shadow-2xs' : ''
                       }`}
                       aria-hidden="true"
                     >
@@ -140,12 +144,12 @@ function Projects() {
                   className={`project-accordion-body ${isExpanded ? 'is-expanded' : ''}`}
                 >
                   <div className="project-accordion-inner">
-                    <div className="border-t border-border bg-page/40 p-4 sm:p-6">
+                    <div className="project-accordion-content border-t border-border bg-page/40 p-5 sm:p-7">
                       <div className="grid gap-6 md:grid-cols-12 md:items-start">
                         {/* Left Column: Visual / Architecture Preview */}
                         <div className="md:col-span-6 lg:col-span-5">
                           {project.imageUrl ? (
-                            <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-border bg-page shadow-xs">
+                            <div className="project-accordion-preview relative aspect-video w-full overflow-hidden rounded-lg border border-border bg-page shadow-xs">
                               <img
                                 src={project.imageUrl}
                                 alt={project.imageAlt ?? `${project.title} interface preview`}
@@ -155,7 +159,7 @@ function Projects() {
                             </div>
                           ) : (
                             <div
-                              className="flex aspect-video w-full flex-col justify-between rounded-lg border border-border bg-page p-4 text-xs shadow-xs"
+                              className="project-accordion-preview flex aspect-video w-full flex-col justify-between rounded-lg border border-border bg-page p-4 text-xs shadow-xs"
                               role="img"
                               aria-label="Intelligent Traffic Management System verified architecture pipeline diagram"
                             >

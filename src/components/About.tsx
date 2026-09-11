@@ -9,8 +9,8 @@ function About() {
       aria-labelledby="about-heading"
       className="border-t border-border px-5 py-20 sm:px-8 sm:py-24 lg:px-12"
     >
-      <div className="mx-auto max-w-6xl">
-        <div ref={ref} className={`max-w-2xl section-reveal ${isRevealed ? 'is-revealed' : ''}`}>
+      <div ref={ref} className="mx-auto max-w-6xl">
+        <div className={`max-w-2xl section-reveal ${isRevealed ? 'is-revealed' : ''}`}>
           <p className="text-sm font-semibold tracking-wide text-accent">About</p>
           <h2
             id="about-heading"

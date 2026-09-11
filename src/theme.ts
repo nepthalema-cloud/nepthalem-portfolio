@@ -6,10 +6,6 @@ function isTheme(value: string | null): value is Theme {
   return value === 'light' || value === 'dark'
 }
 
-function getSystemTheme(): Theme {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-}
-
 function getStoredTheme(): Theme | null {
   try {
     const storedTheme = localStorage.getItem(themeStorageKey)
@@ -24,7 +20,7 @@ export function getTheme(): Theme {
 }
 
 export function initializeTheme(): Theme {
-  const theme = getStoredTheme() ?? getSystemTheme()
+  const theme = getStoredTheme() ?? 'light'
   document.documentElement.dataset.theme = theme
   return theme
 }

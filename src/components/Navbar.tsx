@@ -33,7 +33,7 @@ function Navbar() {
   const switchLabel = theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-page/95 backdrop-blur-sm">
+    <header className="motion-nav-in sticky top-0 z-40 border-b border-border bg-page/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12">
         <a
           className="w-fit rounded-md text-base font-semibold tracking-tight text-foreground transition-colors duration-200 hover:text-accent focus-visible:outline-focus"

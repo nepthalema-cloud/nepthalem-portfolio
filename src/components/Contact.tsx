@@ -10,26 +10,22 @@ function Contact() {
       className="border-t border-border px-5 py-20 sm:px-8 sm:py-24 lg:px-12"
     >
       <div ref={ref} className="mx-auto max-w-6xl">
-        <div className={`max-w-2xl section-reveal ${isRevealed ? 'is-revealed' : ''}`}>
-          <p className="text-sm font-semibold tracking-wide text-accent">Contact</p>
-          <h2
-            id="contact-heading"
-            className="mt-4 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl"
-          >
-            Let&apos;s discuss software engineering opportunities.
-          </h2>
-          <p className="mt-4 text-base leading-7 text-secondary sm:text-lg sm:leading-8">
-            Open to software engineering roles, full-stack development positions, graduate opportunities, and technical collaboration.
-          </p>
-        </div>
+        <div className={`max-w-3xl section-reveal ${isRevealed ? 'is-revealed' : ''}`}>
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold tracking-wide text-accent">Contact</p>
+            <h2
+              id="contact-heading"
+              className="mt-4 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl"
+            >
+              Let&apos;s discuss software engineering opportunities.
+            </h2>
+            <p className="mt-4 text-base leading-7 text-secondary sm:text-lg sm:leading-8">
+              Open to software engineering roles, full-stack development positions, graduate opportunities, and technical collaboration.
+            </p>
+          </div>
 
-        <div className="mt-8 max-w-3xl">
-          <div
-            style={{ transitionDelay: isRevealed ? '50ms' : '0ms' }}
-            className={`card-hover section-reveal rounded-xl border border-border bg-surface p-6 sm:p-8 ${
-              isRevealed ? 'is-revealed' : ''
-            }`}
-          >
+          <div className="mt-8">
+            <div className="card-hover rounded-xl border border-border bg-surface p-6 sm:p-8">
             <h3 className="text-lg font-semibold text-foreground">Get in Touch</h3>
             <p className="mt-2 text-sm leading-6 text-secondary">
               Whether you are interested in discussing full-stack systems architecture, reviewing repository implementations, or exploring professional opportunities, feel free to reach out directly.
@@ -71,7 +67,8 @@ function Contact() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   )
 }
 
