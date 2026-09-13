@@ -54,9 +54,9 @@ function Hero() {
                 <img
                   src="/profile.png"
                   alt="Nepthalem Ayele - Full-Stack Developer and Software Engineer"
-                  className="size-full object-cover object-[center_22%]"
-                  width={461}
-                  height={576}
+                  className="size-full object-cover object-center"
+                  width={820}
+                  height={1024}
                   loading="eager"
                   decoding="async"
                 />
